@@ -1,0 +1,23 @@
+from http.server import BaseHTTPRequestHandler
+import json
+
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps({"status": "ok"}).encode())
+from http.server import BaseHTTPRequestHandler
+import json
+
+PACIENTES = [
+    {"id": 1, "nome": "João Silva", "idade": 45, "diagnostico": "Obesidade Grau I"},
+    {"id": 2, "nome": "Maria Santos", "idade": 34, "diagnostico": "Esteatose hepática"},
+]
+
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(PACIENTES).encode())
